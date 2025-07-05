@@ -97,41 +97,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Animation on scroll
-    function animateOnScroll() {
-        const elements = document.querySelectorAll('.service-card, .project-card, .about-content, .contact-content');
-        
-        elements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (elementTop < windowHeight - 100) {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            }
-        });
-    }
-    
-    // Set initial styles for animation
-    document.addEventListener('DOMContentLoaded', function() {
-        const elements = document.querySelectorAll('.service-card, .project-card, .about-content, .contact-content');
-        elements.forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(30px)';
-            element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-        });
-        
-        // Trigger animation on load
-        setTimeout(animateOnScroll, 300);
+    const elements = document.querySelectorAll('.service-card, .project-card, .about-content, .contact-content');
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target); // مرة واحدة بس
+        }
     });
-    
-    window.addEventListener('scroll', animateOnScroll);
-    
+}, {
+    threshold: 0.2
+});
+
+elements.forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(30px)';
+    element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+    observer.observe(element);
+});
+   
     // Initialize AOS (Animate On Scroll) for elements
     // This is a simple implementation, you can use AOS library for more advanced animations
     function initAOS() {
         const animatedElements = document.querySelectorAll('[data-aos]');
-        
-        function checkIfInView() {
+                function checkIfInView() {
             animatedElements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
