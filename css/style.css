@@ -236,7 +236,7 @@ ul {
                 url('../images/colton-sturgeon-f7ADPPOG_EQ-unsplash.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -406,7 +406,7 @@ ul {
     background-image: url('../images/colton-sturgeon-f7ADPPOG_EQ-unsplash.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     background-blend-mode: overlay;
     color: var(--light-text);
     position: relative;
@@ -541,7 +541,7 @@ ul {
     background-image: url('../images/j-f-manzanero-3J2FB7BItdA-unsplash.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     background-blend-mode: overlay;
     color: var(--light-text);
 }
